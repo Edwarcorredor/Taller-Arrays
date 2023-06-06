@@ -103,10 +103,7 @@
 
      /**
      *TODO Ejercicio 4
-     */
-
-
-    $MasayRadio = array(
+    $masayRadio = array(
         "Mercurio" => array(3.30*pow(10,23), 2439700),
         "Venus" => array(4.87*pow(10,24), 6051800),
         "Tierra" => array(5.97*pow(10,24), 6371000),
@@ -120,23 +117,21 @@
     $constanteGravedad = 6.67*pow(10,-11);
 
 
-    $MasayRadio = array_map(function($value) use ($constanteGravedad){
+    $masayRadio = array_map(function($value) use ($constanteGravedad){
         $value = number_format($constanteGravedad * $value[0] / pow($value[1],2), 4, ".", ".");
         return $value;
-    }, $MasayRadio);
+    }, $masayRadio);
 
-    $gravedadTierra = floatval($MasayRadio["Tierra"]);
-
-    $comparacion = $MasayRadio;
+    $gravedadTierra = floatval($masayRadio["Tierra"]);
 
     $comparacion = array_map(function($value) use ($gravedadTierra){
         $value = number_format(floatval($value) / $gravedadTierra, 3, ".", ".");
         return $value;
-    }, $comparacion);
+    }, $masayRadio);
 
     $tabla = '<table class="table table-dark table-striped table-hover text-center"><thead><tr><th scope="col">Planeta</th><th scope="col">Gravedad (m/s^2)</th><th scope="col">Comparación con la Tierra</th></tr></thead><tbody>';
 
-    foreach ($MasayRadio as $key => $value) {
+    foreach ($masayRadio as $key => $value) {
         $tabla .= "<tr><td>$key</td><td>$value</td><td>$comparacion[$key]</td></tr>";
     };
 
@@ -151,8 +146,36 @@
     </div>
 
     HTML;
+     */
 
+/**
+    *TODO Ejercicio 5
+*/
+    $naves = array(
+        "nave1" => 5,
+        "nave2" => 3,
+        "nave3" => 7,
+        "nave4" => 10,
+        "nave5" => 2,
+        "nave6" => 1,
+        "nave7" => 8,
+        "nave8" => 4,
+        "nave9" => 6,
+        "nave10" => 9
+    );
+
+    $masaNaves = array_sum($naves);
+
+    echo <<<HTML
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <div class="container text-center p-3">
+        <h1 style="color: white;">La suma de la masa de las naves es: $masaNaves </h1>
+        <a href='index.html'><button class="btn btn-info">Volver</button></a>
+    </div>
     
+    HTML;
 
 
 ?>    
