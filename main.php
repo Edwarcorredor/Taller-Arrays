@@ -28,9 +28,8 @@
     */
 
     /**
-     *TODO Punto 2
-     */
-    
+     *TODO Ejercicio 2
+
     $planetas = [];
 
     $valor = $_POST['valor'];
@@ -65,6 +64,43 @@
     </div>
     
     HTML;
+    */
+        /**
+     *TODO Ejercicio 3
+     */
+    $planetas = array(
+        "Mercurio" => "No habitable",
+        "Venus" => "No habitable",
+        "Tierra" => "Habitable",
+        "Marte" => "No habitable",
+        "Jupiter" => "No habitable",
+        "Saturno" => "No habitable",
+        "Urano" => "No habitable",
+        "Neptuno" => "No habitable"
+    );
+
+    $planetas = array_filter($planetas, function($value){
+        return $value == "Habitable";
+    });
+
+    $tabla = '<table class="table table-dark table-striped table-hover"><thead><tr><th scope="col">Planeta</th><th scope="col">Estado</th></tr></thead><tbody>';
+
+    foreach ($planetas as $key => $value) {
+        $tabla .= "<tr><td>$key</td><td>$value</td></tr>";
+    };
+
+    echo <<<HTML
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <div class="container text-center p-3">
+        <h1 style="color: white;">Planetas habitables: $tabla</h1>
+        <br>
+        <a href='index.html'><button class="btn btn-info m-3">Volver</button></a>
+    </div>
+    
+    HTML;
+    
 
 
 ?>    
